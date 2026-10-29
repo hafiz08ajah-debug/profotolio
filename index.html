@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050712">
+<meta name="description" content="Portfolio personal — profil, pengalaman, proyek, dan kontak.">
+<title>Portfolio — Nama Kamu</title>
+<style>
+:root{--bg:#050712;--panel:rgba(10,18,43,.88);--panel2:rgba(12,24,55,.78);--line:rgba(91,133,255,.22);--blue:#286bff;--cyan:#77d7ff;--white:#f4f6ff;--muted:#b4bfd9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+#space{position:fixed;inset:0;width:100%;height:100%;z-index:-3;background:radial-gradient(ellipse at 48% 42%,#0b1b45 0%,#050712 62%,#02030a 100%)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 15% 60%,#08235a55,transparent 35%),radial-gradient(ellipse at 85% 25%,#0b3e9a22,transparent 32%)}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(1100px,92%);margin:auto}
+.topbar{position:fixed;z-index:30;top:18px;left:0;right:0;display:flex;justify-content:center;pointer-events:none}
+nav{pointer-events:auto;display:flex;align-items:center;gap:4px;padding:6px;background:rgba(5,9,24,.82);border:1px solid #7197ff33;border-radius:999px;backdrop-filter:blur(18px);box-shadow:0 8px 40px #0007}
+nav a{font-size:12px;color:#c5d0eb;padding:10px 17px;border-radius:999px;transition:.2s}nav a:hover,nav a.active{background:linear-gradient(120deg,#286bff,#183a8a);color:white}
+.brand{position:fixed;top:24px;left:24px;z-index:31;font-size:11px;font-weight:900;letter-spacing:1.5px;color:#eaf2ff}.brand span{color:#63a7ff}
+section{min-height:80vh;padding:112px 0 72px;position:relative}.hero{min-height:100vh;display:flex;align-items:center;padding-top:125px}
+.hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:35px;align-items:center}
+.kicker{font-size:11px;color:#8fbaff;text-transform:uppercase;letter-spacing:3px;font-weight:800}
+h1{font-size:clamp(40px,6vw,72px);line-height:.99;letter-spacing:-2px;margin:16px 0 20px;font-weight:850}
+h1 .blue,.blue{color:#4282ff;text-shadow:0 0 26px #276dff33}
+.lead{font-size:14px;line-height:1.85;color:#b8c4df;max-width:510px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 20px}
+.btn{border:1px solid #7197ff36;border-radius:8px;padding:11px 15px;font-size:12px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#0b1530;color:#e5edff}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px #075bff36}.btn.primary{background:linear-gradient(135deg,#246dff,#1547b0);border-color:#4c8cff;color:white}
+.socials{display:flex;gap:8px}.socials a{height:34px;width:34px;border:1px solid #7197ff35;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#b8d5ff}.socials a:hover{background:#13306a}
+.profile-stage{height:410px;position:relative;display:flex;align-items:center;justify-content:center}
+.profile-halo{position:absolute;width:300px;height:300px;border-radius:50%;background:#0c61ff29;filter:blur(60px)}
+.profile-photo{position:relative;width:300px;height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:140px 140px 20px 20px;background:linear-gradient(145deg,#132a5c,#060b1b);border:1px solid #6aa2ff42;box-shadow:0 0 55px #1265ff20}
+.profile-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.photo-placeholder{text-align:center;padding:25px;color:#c4d9ff}.photo-placeholder b{display:block;margin-top:12px}.photo-placeholder small{display:block;margin-top:7px;color:#91a8d4;line-height:1.6}
+.status{position:absolute;bottom:30px;right:0;background:#08132beF;border:1px solid #6b9bff3a;border-radius:11px;padding:12px 15px;font-size:11px;color:#bac8e4;box-shadow:0 12px 32px #0007}.status strong{display:block;font-size:14px;color:#8bcfff;margin-bottom:3px}
+.section-title{margin-bottom:28px}.section-title .kicker{margin-bottom:10px}.section-title h2{font-size:clamp(30px,4vw,44px);margin:0 0 12px;letter-spacing:-1px}.section-title p{max-width:620px;color:var(--muted);font-size:13px;line-height:1.8}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+.panel{background:linear-gradient(145deg,rgba(14,27,62,.9),rgba(6,11,27,.92));border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 15px 35px #0002}
+.panel h3{margin:9px 0 8px;font-size:16px}.panel p{font-size:12px;color:var(--muted);line-height:1.8}.symbol{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#123879;color:#a5ddff;font-size:18px}
+.timeline{display:grid;gap:13px;margin-top:15px}.timeline-item{display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start}.timeline-icon{width:30px;height:30px;border:1px solid #6292ff42;border-radius:9px;display:grid;place-items:center;color:#9ccaff;background:#0c1d43}.timeline-item strong{display:block;font-size:12px}.timeline-item small{color:#83a1d4;font-size:10px}.timeline-item p{margin:4px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.stat{text-align:center;padding:14px 5px;border:1px solid var(--line);background:#08132b;border-radius:10px}.stat strong{display:block;font-size:24px;color:#7eb9ff}.stat span{font-size:10px;color:#9baaca}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}.tab{cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:9px 14px;background:#08132b;color:#aebfe0;font-size:11px}.tab.active{background:#1d58c7;color:white}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.project{padding:14px}.project-cover{height:135px;border:1px solid #5d8cff2a;border-radius:9px;background:radial-gradient(circle at 50% 30%,#1c4e9a,#0a1430 72%);display:grid;place-items:center;font-size:40px;color:#9bd5ff}.project h3{font-size:14px;margin:14px 0 7px}.project p{font-size:11px}.pill{display:inline-block;padding:4px 7px;margin:2px 3px 2px 0;border-radius:99px;background:#102750;color:#9ed6ff;font-size:9px}
+.skills{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.skill{padding:15px 5px;text-align:center;border:1px solid var(--line);border-radius:11px;background:#08132b;color:#d9e8ff;font-size:10px}.skill b{display:block;font-size:21px;color:#8dccff;margin-bottom:7px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.contact-line{padding:14px 0;border-bottom:1px solid var(--line);font-size:11px;color:#aab9d9}.contact-line strong{display:block;color:#f2f6ff;margin-bottom:5px;font-size:12px}
+form{display:grid;gap:11px}label{font-size:11px;color:#c3d1ee}input,textarea{display:block;width:100%;margin-top:6px;padding:12px;border-radius:8px;border:1px solid #6c92ff2e;background:#050b1b;color:white;outline:none;font-size:12px}input:focus,textarea:focus{border-color:#4386ff}textarea{min-height:110px;resize:vertical}
+footer{border-top:1px solid #ffffff0b;text-align:center;padding:26px 0 35px;color:#7184ab;font-size:10px}
+.reveal{opacity:0;transform:translateY(15px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:translateY(0)}
+.intro{position:fixed;inset:0;z-index:100;background:#03050d;display:grid;place-items:center;animation:introOut 1s ease 2.1s forwards;pointer-events:none}.intro-text{text-align:center;font-size:clamp(22px,4vw,44px);font-weight:900;letter-spacing:-1px;animation:introText 1.8s ease forwards}.intro-text span{display:block;color:#377cff;text-shadow:0 0 25px #276dff99}.bolt{position:absolute;width:3px;height:130%;top:-15%;left:50%;background:#9adfff;box-shadow:0 0 12px 5px #2c8bff;transform:rotate(16deg);opacity:0;animation:bolt .7s ease .25s forwards}
+@keyframes bolt{0%{opacity:0;clip-path:inset(0 0 100% 0)}30%{opacity:1;clip-path:inset(0 0 0 0)}70%{opacity:.7}100%{opacity:0}}
+@keyframes introText{0%{opacity:0;transform:scale(.8);filter:blur(8px)}35%{opacity:1;transform:scale(1);filter:blur(0)}80%{opacity:1}100%{opacity:0;transform:scale(1.05)}}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+.toast{position:fixed;z-index:80;bottom:18px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#0c1b3a;border:1px solid #6798ff50;padding:12px 16px;border-radius:10px;font-size:12px;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.brand{top:13px;left:12px;font-size:9px}.topbar{top:12px}nav{gap:0;padding:4px}nav a{font-size:10px;padding:9px 10px}.hero{padding-top:100px}.hero-grid{grid-template-columns:1fr;gap:4px}.profile-stage{height:320px;grid-row:1}.profile-photo{width:230px;height:275px}.profile-halo{width:220px;height:220px}.status{right:2%;bottom:18px}.hero-copy{padding-bottom:25px}section{padding:90px 0 50px}.about-grid,.contact-grid{grid-template-columns:1fr}.project-grid{grid-template-columns:1fr}.project-cover{height:160px}.skills{grid-template-columns:repeat(3,1fr)}.stats{gap:6px}.stat strong{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="intro" id="intro"><div class="bolt"></div><div class="intro-text">Welcome To My<span>Portfolio Website</span><small style="display:block;font-size:10px;letter-spacing:4px;color:#b8c9ed;margin-top:15px">LOADING...</small></div></div>
+<div class="brand">PERSONAL <span>PORTFOLIO</span></div>
+<div class="topbar"><nav aria-label="Navigasi utama"><a class="active" href="#home">Home</a><a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a></nav></div>
+<main>
+<section class="hero" id="home"><div class="wrap hero-grid">
+<div class="hero-copy reveal"><div class="kicker">Halo, selamat datang di website saya</div><h1><span class="blue">Turning Ideas</span><br>Into Reality</h1><p class="lead">Saya seorang pelajar dan kreator digital yang tertarik pada teknologi, desain, dan pengembangan website. Saya senang belajar hal baru, membangun proyek, dan mengubah ide menjadi sesuatu yang bermanfaat.</p>
+<div class="actions"><a class="btn primary" href="#portfolio">▣ Lihat Proyek</a><a class="btn" href="#contact">✉ Contact Me</a></div>
+<div class="socials"><a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GH</a><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a></div></div>
+<div class="profile-stage reveal"><div class="profile-halo"></div><div class="profile-photo"><img src="assets/profile.jpg" alt="Foto profil" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="photo-placeholder" style="display:none"><div style="font-size:75px">👨‍💻</div><b>Foto Kamu</b><small>Taruh foto kamu di<br><code>assets/profile.jpg</code></small></div></div><div class="status"><strong>✦ Terus berkembang</strong>Belajar • Berkarya • Berproses</div></div>
+</div></section>
+<section id="about"><div class="wrap"><div class="section-title reveal"><div class="kicker">Sedikit tentang saya</div><h2>Hi, I'm <span class="blue">Nama Kamu</span></h2><p>Kenalan lebih dekat dengan saya, perjalanan belajar, dan hal-hal yang sedang saya kembangkan.</p></div>
+<div class="about-grid"><article class="panel reveal"><div class="symbol">✦</div><h3>Tentang Saya</h3><p>Nama saya <b>Nama Kamu</b>. Saya tertarik pada dunia digital, pembuatan website, desain visual, dan teknologi AI. Saya percaya kemampuan berkembang lewat latihan, proyek nyata, dan konsistensi.</p><a class="btn primary" href="#contact">Hubungi Saya ↗</a></article>
+<article class="panel reveal"><div class="symbol">⌁</div><h3>Perjalanan Saya</h3><div class="timeline"><div class="timeline-item"><div class="timeline-icon">⌘</div><div><strong>Mulai belajar teknologi</strong><small>Belajar mandiri</small><p>Mengenal tools digital dan dasar pembuatan website.</p></div></div><div class="timeline-item"><div class="timeline-icon">✧</div><div><strong>Membangun proyek</strong><small>Proses berkelanjutan</small><p>Mencoba ide baru dan menyusun portofolio karya.</p></div></div><div class="timeline-item"><div class="timeline-icon">↗</div><div><strong>Terus berkembang</strong><small>Target berikutnya</small><p>Meningkatkan kualitas dan berbagi hasil belajar.</p></div></div></div></article></div>
+<div class="stats reveal"><div class="stat"><strong>06</strong><span>PROJECTS</span></div><div class="stat"><strong>05</strong><span>CERTIFICATES</span></div><div class="stat"><strong>04</strong><span>AWARDS</span></div></div>
+</div></section>
+<section id="portfolio"><div class="wrap"><div class="section-title reveal"><div class="kicker">Beberapa hasil karya</div><h2>My <span class="blue">Portfolio</span></h2><p>Ini contoh proyek untuk mengisi tampilan. Ganti dengan proyek asli kamu dan tambahkan link demo bila tersedia.</p></div>
+<div class="tabs reveal"><button class="tab active" data-filter="all">Semua</button><button class="tab" data-filter="web">Website</button><button class="tab" data-filter="design">Design</button><button class="tab" data-filter="ai">AI & Tools</button></div>
+<div class="project-grid">
+<article class="panel project reveal" data-category="web"><div class="project-cover">⌘</div><h3>Personal Portfolio</h3><p>Website profil responsif untuk menampilkan informasi diri dan karya.</p><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><p><a class="btn" href="#contact">Tanya proyek ↗</a></p></article>
+<article class="panel project reveal" data-category="design"><div class="project-cover">✧</div><h3>Digital Content Design</h3><p>Konsep desain konten digital dengan tampilan konsisten dan modern.</p><span class="pill">Design</span><span class="pill">Branding</span><p><a class="btn" href="#contact">Tanya proyek ↗</a></p></article>
+<article class="panel project reveal" data-category="ai"><div class="project-cover">⚡</div><h3>AI Prompt Experiments</h3><p>Eksperimen prompt dan tools AI untuk membantu proses kreatif.</p><span class="pill">AI</span><span class="pill">Prompt</span><p><a class="btn" href="#contact">Tanya proyek ↗</a></p></article>
+</div></div></section>
+<section id="skills"><div class="wrap"><div class="section-title reveal"><div class="kicker">Tools yang saya pelajari</div><h2>Skills & <span class="blue">Tools</span></h2><p>Sesuaikan daftar ini dengan kemampuan yang benar-benar kamu miliki atau sedang pelajari.</p></div><div class="skills reveal">
+<div class="skill"><b>5</b>HTML</div><div class="skill"><b>3</b>CSS</div><div class="skill"><b>JS</b>JavaScript</div><div class="skill"><b>GH</b>GitHub</div><div class="skill"><b>▲</b>Vercel</div><div class="skill"><b>✧</b>AI Tools</div><div class="skill"><b>F</b>Figma</div><div class="skill"><b>◎</b>Canva</div><div class="skill"><b>⌘</b>VS Code</div><div class="skill"><b>◈</b>Git</div><div class="skill"><b>R</b>Research</div><div class="skill"><b>✎</b>Writing</div>
+</div></div></section>
+<section id="contact"><div class="wrap"><div class="section-title reveal"><div class="kicker">Ada ide atau pertanyaan?</div><h2>Hubungi <span class="blue">Saya</span></h2><p>Kirim pesan untuk pertanyaan, kolaborasi, atau sekadar menyapa.</p></div>
+<div class="contact-grid"><article class="panel reveal"><h3>Informasi Kontak</h3><p>Silakan hubungi saya melalui kontak di bawah ini.</p><div class="contact-line"><strong>Email</strong><span id="emailText">emailkamu@example.com</span></div><div class="contact-line"><strong>Lokasi</strong>Indonesia</div><div class="contact-line"><strong>GitHub</strong><a id="githubLink" href="https://github.com/" target="_blank" rel="noopener">github.com/username ↗</a></div><div class="contact-line"><strong>Instagram</strong><a id="instagramLink" href="https://instagram.com/" target="_blank" rel="noopener">@username ↗</a></div></article>
+<form class="panel reveal" id="contactForm"><h3>Kirim Pesan</h3><label>Nama kamu<input name="name" required maxlength="80" placeholder="Masukkan nama"></label><label>Email kamu<input name="email" type="email" required maxlength="120" placeholder="nama@email.com"></label><label>Pesan<textarea name="message" required maxlength="2000" placeholder="Tulis pesan kamu..."></textarea></label><button class="btn primary" type="submit">✉ Siapkan Email</button><small style="color:#8fa0c4;font-size:10px;line-height:1.6">Saat dikirim, aplikasi email di perangkat akan terbuka. Form ini tidak menyimpan data ke server.</small></form></div></div></section>
+</main>
+<footer>© <span id="year"></span> Nama Kamu · Dibuat dengan semangat belajar ✦</footer><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+// === EDIT DATA PORTFOLIO DI BAGIAN INI ===
+const PROFILE={name:"Nama Kamu",email:"emailkamu@example.com",github:"https://github.com/username",instagram:"https://instagram.com/username"};
+document.title="Portfolio — "+PROFILE.name;
+document.querySelectorAll("h2 .blue").forEach(el=>{if(el.textContent==="Nama Kamu")el.textContent=PROFILE.name});
+document.getElementById("emailText").textContent=PROFILE.email;
+document.getElementById("githubLink").href=PROFILE.github;document.getElementById("githubLink").textContent=PROFILE.github.replace("https://","")+" ↗";
+document.getElementById("instagramLink").href=PROFILE.instagram;document.getElementById("instagramLink").textContent=PROFILE.instagram.replace("https://instagram.com/","@")+" ↗";
+document.getElementById("year").textContent=new Date().getFullYear();
+// Animated star field
+const canvas=document.getElementById("space"),ctx=canvas.getContext("2d");let stars=[],cw=0,ch=0;
+function resizeStars(){const d=Math.min(devicePixelRatio||1,2);cw=canvas.width=innerWidth*d;ch=canvas.height=innerHeight*d;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";stars=Array.from({length:Math.min(190,Math.floor(innerWidth/5))},()=>({x:Math.random()*cw,y:Math.random()*ch,r:Math.random()*1.25*d,a:.25+Math.random()*.7,s:(.08+Math.random()*.23)*d}))}
+function drawStars(){ctx.clearRect(0,0,cw,ch);for(const s of stars){ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(184,211,255,${s.a})`;ctx.fill();s.y+=s.s;if(s.y>ch){s.y=0;s.x=Math.random()*cw}}requestAnimationFrame(drawStars)}addEventListener("resize",resizeStars);resizeStars();drawStars();
+// Reveal sections smoothly
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");revealObserver.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+// Active navigation while scrolling
+const navItems=[...document.querySelectorAll("nav a")];const navObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)navItems.forEach(a=>a.classList.toggle("active",a.hash==="#"+e.target.id))}),{rootMargin:"-35% 0px -55% 0px"});["home","about","portfolio","contact"].forEach(id=>{const el=document.getElementById(id);if(el)navObserver.observe(el)});
+// Portfolio category filter
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".project").forEach(card=>card.hidden=!(btn.dataset.filter==="all"||card.dataset.category===btn.dataset.filter))}));
+// Contact form opens the user's email app; replace PROFILE.email above first.
+document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.currentTarget);if(!PROFILE.email||PROFILE.email==="emailkamu@example.com"){showToast("Edit email di bagian PROFILE dalam index.html dulu.");return}const subject=encodeURIComponent("Pesan portfolio dari "+f.get("name"));const body=encodeURIComponent("Nama: "+f.get("name")+"\nEmail: "+f.get("email")+"\n\nPesan:\n"+f.get("message"));location.href=`mailto:${PROFILE.email}?subject=${subject}&body=${body}`});
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3200)}
+</script>
+</body></html>
